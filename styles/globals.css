@@ -1,16 +1,20 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Nunito+Sans:wght@600&family=Poppins:wght@100;300;400;700&family=Tangerine&display=swap');
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-* {
-  box-sizing: border-box;
+@layer components{
+    .link{
+        @apply px-4 cursor-pointer hover:shadow-md active:scale-95 hover:bg-slate-100 py-2 hover:text-black border-gray-400 hover:border rounded-full transition duration-300 font-semibold;
+    }
+    .button{
+        @apply  flex items-center text-xl border-2 px-3 py-2 border-black hover:text-black hover:font-semibold active:scale-95 animate-bounce hover:animate-none hover:bg-gray-100 bg-black text-gray-50 hover:shadow-md;
+    }
+    .footerHeader{
+        @apply text-xl font-bold text-black mb-3
+    }
+    .footerLink{
+        @apply text-sm cursor-pointer hover:underline py-1;
+    }
 }
