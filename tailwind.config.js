@@ -9,5 +9,8 @@ module.exports = {
       'tangerine':['Tangerine']
     }
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+    require('@tailwindcss/line-clamp'),
+  ],
 }

@@ -2,8 +2,12 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import InfoHeader from '../components/InfoHeader'
+
 import Footer from '../components/Footer'
-export default function Home() {
+import Products from '../components/Products'
+
+
+export default function Home({products}) {
   return (
     <div>
       <Head>
@@ -14,7 +18,20 @@ export default function Home() {
       <InfoHeader />
       <Header />
       <Hero />
+      <main className=' max-w-screen-2xl mx-auto'>
+          <Products products ={products} />
+      </main>
       <Footer />
     </div>
   )
+}
+
+export async function getServerSideProps(){
+  const products = await fetch('https://fakestoreapi.com/products').then(res => res.json());
+
+  return{
+    props:{
+      products
+    }
+  }
 }

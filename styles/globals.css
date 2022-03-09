@@ -4,17 +4,27 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base{
+    body{
+        @apply bg-[#EAEDED];
+    }
+}
+
 @layer components{
     .link{
         @apply px-4 cursor-pointer hover:shadow-md active:scale-95 hover:bg-slate-100 py-2 hover:text-black border-gray-400 hover:border rounded-full transition duration-300 font-semibold;
     }
     .button{
-        @apply  flex items-center text-xl border-2 px-3 py-2 border-black hover:text-black hover:font-semibold active:scale-95 animate-bounce hover:animate-none hover:bg-gray-100 bg-black text-gray-50 hover:shadow-md;
+        @apply  flex items-center text-xl border-2 px-3 py-2 border-black hover:text-black hover:font-semibold active:scale-95  hover:bg-gray-100 bg-black text-gray-50 hover:shadow-md;
     }
     .footerHeader{
         @apply text-xl font-bold text-black mb-3
     }
     .footerLink{
         @apply text-sm cursor-pointer hover:underline py-1;
+    }
+    .addToCartButton{
+    @apply my-auto mx-auto mb-3 bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 active:from-yellow-500 rounded-sm py-1 active:scale-95  w-4/5;
     }
 }
