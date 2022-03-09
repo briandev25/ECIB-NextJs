@@ -2,7 +2,6 @@ import React from 'react'
 import Product from './Product'
 
 function Products({products}) {
-    console.log(products)
   return (
       <div className='mx-10 py-6'>
           <h1 className=' text-2xl text-center font-bold'>For You</h1>
