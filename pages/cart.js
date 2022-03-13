@@ -5,6 +5,9 @@ import Header from '../components/Header'
 import { useRouter } from 'next/router'
 import { useSelector} from 'react-redux'
 import CartItem from '../components/CartItem';
+import Footer from '../components/Footer'
+
+
 function Cart() {
   const router = useRouter();
   const cart = useSelector(state => state.cart)
@@ -20,7 +23,7 @@ function Cart() {
       <Header />
 
       
-    { cart.length< 1 ? <div className='flex items-center justify-center'>
+    { cart.length< 1 ? <div className='flex items-center justify-center mb-10'>
       <div className='flex flex-col bg-white mt-20 min-w-[300px] mx-10 w-full  md:w-1/2'>
         <h1 className=' text-center text-2xl font-semibold py-5'>Your Cart is empty</h1>
         <Image src='/images/empty-cart.png' width={300}  height={300} objectFit='contain' />
@@ -36,13 +39,13 @@ function Cart() {
               ))}
             </div>
                       {/* Subtotal */}
-            <div className=' bg-orange-400 md:w-[300px]'>
+            <div className=' bg-orange-400 md:w-[500px]'>
                 <h1>Subtotal</h1>
             </div>
         </div>
       </div> }
 
-
+  <Footer /> 
       
     
     </div>
