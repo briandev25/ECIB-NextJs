@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image';
 import { LightningBoltIcon, } from '@heroicons/react/solid'
 import { useSession,signIn,signOut } from 'next-auth/react';
 import { GiShoppingCart } from 'react-icons/gi'
@@ -15,12 +16,14 @@ function Navbar() {
   return (
     <nav className='max-w-7xl mx-auto px-8 sm:px-16 flex items-center whitespace-nowrap text-gray-200'>
           <div onClick={() =>router.push('/')} className='text-gray-100 flex items-center cursor-pointer flex-grow'>
-              <LightningBoltIcon className=' h-6' />
-            <h1 className=' font-tangerine text-2xl md:text-4xl font-bold py-3 px-2'>Egerton Comrades In Business</h1> 
+            <Image src='/images/my-logo.png' width={200} height={70} objectFit='cover' />
           </div>
           <div className=' hidden md:flex items-center space-x-4 pr-10'>
             <h3 className='link'>Explore</h3>
-            <h3 className='link' onClick={() =>!session ? signIn() : signOut() }>{session ? `Welcome, ${session.user.name}` : 'Sign In'}</h3>
+            <div className='flex items-center'>
+              {session && <img src={session.user.image} alt="" width={40} height={40} className=' rounded-full'/>}
+            <h3 className='link' onClick={() =>!session ? signIn() : signOut() }>{session ? `${session.user.name}` : 'Sign In'}</h3>
+            </div>
             <div className='h-10 w-10 flex items-center justify-center cursor-pointer hover:bg-gray-500 p-2 rounded-full' >
               <MdFavorite className=' text-3xl' />
             </div>
