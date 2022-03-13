@@ -9,6 +9,7 @@ import Products from '../components/Products'
 
 export default function Home({products}) {
   return (
+    <div className='relative flex'>
     <div>
       <Head>
         <title>Egerton Comrades In Business</title>
@@ -21,7 +22,11 @@ export default function Home({products}) {
       <main className=' max-w-screen-2xl mx-auto'>
           <Products products ={products} />
       </main>
-      <Footer />
+      <Footer />   
+     </div>
+     <div className='hidden sticky bg-slate-50 z-50 right-0 top-0 z-100 w-1/4 h-[100vh]'>
+       <p>Hello</p>
+     </div>
     </div>
   )
 }
