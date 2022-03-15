@@ -19,6 +19,12 @@ export const addToCart = (product) =>{
          payload:product
      }
 }
+export const addToLiked = (product) =>{
+    return{
+        type:Actiontypes.ADD_TO_LIKED,
+        payload:product
+    }
+}
 export const removeFromCart = (productId) =>{
     return{
         type:Actiontypes.REMOVE_FROM_CART,

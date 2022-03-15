@@ -39,7 +39,7 @@ function Cart() {
               ))}
             </div>
                       {/* Subtotal */}
-            <div className=' bg-orange-400 md:w-[500px]'>
+            <div className=' bg-orange-400 md:w-[500px] p-5'>
                 <h1>Subtotal</h1>
             </div>
         </div>

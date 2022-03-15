@@ -1,21 +1,24 @@
 import Image from 'next/image'
-import React from 'react'
-import { addToCart } from '../app/actions/productAction'
-
-import { StarIcon} from '@heroicons/react/solid'
-import { useSelector,useDispatch } from 'react-redux'
+import React,{useState} from 'react'
+import { addToCart,addToLiked } from '../app/actions/productAction'
+import {HeartIcon as HeartIconOutline} from '@heroicons/react/outline'
+import { StarIcon,HeartIcon as HeartIconSolid} from '@heroicons/react/solid'
+import { useDispatch } from 'react-redux'
 
 
 function Product({title,price,description,category,image,rating}) {
-
-  const cart = useSelector(state => state?.cart);
-
- const product = {title,price,description,category,image,rating}
+  const product = {title,price,description,category,image,rating}
+  const [liked,setLiked] = useState(false);
   const dispatch = useDispatch()
+
+
   return (
     <div className='flex flex-col min-h-[374px] min-w-[321px] bg-white shadow-lg hover:bg-slate-100 px-2 py-1 m-5 cursor-pointer'>
-        <div>
-          
+        <div onClick={() =>{
+          setLiked(!liked);
+          dispatch(addToLiked(product));
+          }}>
+            {!liked ? <HeartIconOutline className='h-7 cursor-pointer float-right'/> : <HeartIconSolid className='h-7 cursor-pointer text-red-500 float-right' />}
         </div>
         <div className='relative h-[229px] w-[321px]  mx-auto '>
             <Image src={image} layout='fill'  objectFit='contain' className=' hover:scale-110 transition duration-300 ease-out' />
