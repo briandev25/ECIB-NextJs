@@ -6,7 +6,7 @@ const initialState= {
     liked:[]
 }
 
-export const getTotal = (cart) => cart.reduce((total,item) =>total + item.price,0);
+export const getTotal = (cart) => cart?.reduce((total,item) =>total + item.price,0);
 
 export const productReducer = (state = initialState,action) =>{
   switch(action.type){

@@ -11,7 +11,7 @@ const dispatch = useDispatch();
 
 
   return (
-    <div className='flex hover:bg-white py-3 border-b bg-slate-50 group cursor-pointer'>
+    <div className='flex hover:bg-white py-3 border-b bg-slate-50 shadow-2xl group cursor-pointer'>
         {/* image */}
         <div className='relative h-24 w-40 md:h-[200px] md:w-[300px] group-hover:scale-90 transition transform duration-200 ease-out' >
             <Image src={image} alt='' layout='fill' objectFit='cover' className=' rounded-2xl' />

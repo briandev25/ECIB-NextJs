@@ -32,7 +32,13 @@ function Navbar() {
           {cart && cart.length > 0 ? <div className=' h-4 w-4 rounded-full bg-slate-500 flex items-center justify-center absolute top-0 right-0 p-2 '><span>{cart.length}</span></div>: ''}
           </div>
         </div>
-        <h3 className='button animate-none px-6 py-1 active:scale-95 bg-gray-800 cursor-pointer'>Sell</h3>
+        <h3 onClick={() =>{
+          if(session){
+            router.push('/form')
+          }else{
+            signIn()
+          }
+        }} className='button animate-none px-6 py-1 active:scale-95 bg-gray-800 cursor-pointer'>Sell</h3>
     </nav>
   )
 }

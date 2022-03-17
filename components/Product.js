@@ -13,7 +13,7 @@ function Product({title,price,description,category,image,rating}) {
 
 
   return (
-    <div className='flex flex-col min-h-[374px] min-w-[321px] bg-white shadow-lg hover:bg-slate-100 px-2 py-1 m-5 cursor-pointer'>
+    <div data-aos='fade-up' className='flex flex-col min-h-[374px] min-w-[321px] bg-white shadow-lg hover:bg-slate-100 px-2 py-1 m-5 cursor-pointer'>
         <div onClick={() =>{
           setLiked(!liked);
           dispatch(addToLiked(product));

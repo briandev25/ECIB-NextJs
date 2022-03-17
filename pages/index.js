@@ -2,12 +2,20 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import InfoHeader from '../components/InfoHeader'
-
+import Categories from '../components/Categories'
 import Footer from '../components/Footer'
 import Products from '../components/Products'
-
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react'
 
 export default function Home({products}) {
+
+  useEffect(() =>{
+    AOS.init({duration:2000});
+  },[])
+
+  
   return (
     <div className='relative flex'>
     <div>
@@ -20,7 +28,8 @@ export default function Home({products}) {
       <Header />
       <Hero />
       <main className=' max-w-screen-2xl mx-auto'>
-          <Products products ={products} />
+      <Categories /> 
+      <Products products ={products} />
       </main>
       <Footer />   
      </div>

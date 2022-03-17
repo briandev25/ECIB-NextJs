@@ -6,11 +6,12 @@ import { useRouter } from 'next/router'
 import { useSelector} from 'react-redux'
 import CartItem from '../components/CartItem';
 import Footer from '../components/Footer'
+import Subtotal from '../components/Subtotal';
 
 
 function Cart() {
   const router = useRouter();
-  const cart = useSelector(state => state.cart)
+  const cart = useSelector(state => state?.cart)
 
 
   return (
@@ -23,15 +24,15 @@ function Cart() {
       <Header />
 
       
-    { cart.length< 1 ? <div className='flex items-center justify-center mb-10'>
+    { cart?.length< 1 ? <div className='flex items-center justify-center mb-10'>
       <div className='flex flex-col bg-white mt-20 min-w-[300px] mx-10 w-full  md:w-1/2'>
         <h1 className=' text-center text-2xl font-semibold py-5'>Your Cart is empty</h1>
         <Image src='/images/empty-cart.png' width={300}  height={300} objectFit='contain' />
         <button onClick={() => router.push('/')} className='cartButton'>Back to shopping</button>
       </div>
-      </div> : <div className='flex flex-col items-center justify-center w-full '>
+      </div> : <div className='flex max-w-screen-xl mx-auto flex-col items-center justify-center w-full'>
         <h1 className=' text-3xl font-semibold m-5'>Shopping Details</h1>
-        <div className='flex flex-col md:flex-row  w-full'>
+        <div className='flex flex-col   w-full'>
                       {/* CartItems */}
             <div className=' flex flex-col flex-grow'>
               {cart?.map((item) =>(
@@ -39,8 +40,8 @@ function Cart() {
               ))}
             </div>
                       {/* Subtotal */}
-            <div className=' bg-orange-400 md:w-[500px] p-5'>
-                <h1>Subtotal</h1>
+            <div className='flex justify-center   p-5'>
+                <div className='w-[500px] shadow-md py-6 px-12 bg-white max-h-[300px]'><Subtotal /></div>
             </div>
         </div>
       </div> }
