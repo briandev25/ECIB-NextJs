@@ -29,6 +29,11 @@ export const productReducer = (state = initialState,action) =>{
         ...state,
          cart:[...state.cart.filter((item) =>item.image !== action.payload)]
     }
+    case Actiontypes.REMOVE_FROM_LIKES:
+      return{
+        ...state,
+         liked:[...state.liked.filter((item) =>item.image !== action.payload)]
+    }
       default:
         return state;
   }

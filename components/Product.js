@@ -39,7 +39,7 @@ function Product({title,price,description,category,image,rating}) {
           </div>
           <p className=' text-base text-gray-600 mr-4'>{`$${price}`}</p>
         </div>
-        <button className='addToCartButton' onClick={() =>dispatch(addToCart(product))}>Add to Cart</button>
+        <button className='addToCartButton' onClick={() =>dispatch(addToCart(product))}>Connect to seller</button>
     </div>
   )
 }

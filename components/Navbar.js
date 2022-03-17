@@ -1,8 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
-import { LightningBoltIcon, } from '@heroicons/react/solid'
 import { useSession,signIn,signOut } from 'next-auth/react';
-import { GiShoppingCart } from 'react-icons/gi'
+import { FiPhoneCall } from 'react-icons/fi'
 import { MdFavorite } from 'react-icons/md'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
@@ -24,11 +23,11 @@ function Navbar() {
               {session && <img src={session.user.image} alt="" width={40} height={40} className=' rounded-full'/>}
             <h3 className='link' onClick={() =>!session ? signIn() : signOut() }>{session ? `${session.user.name}` : 'Sign In'}</h3>
             </div>
-            <div className='h-10 w-10 flex items-center justify-center cursor-pointer hover:bg-gray-500 p-2 rounded-full' >
-              <MdFavorite onClick={() => router.push('/liked')} className=' text-3xl' title='favorites' />
+            <div className='h-10 w-10 flex items-center justify-center cursor-pointer p-2 rounded-full' >
+              <MdFavorite onClick={() => router.push('/liked')} className=' text-3xl hover:animate-bounce' title='favorites' />
             </div>
             <div onClick={() =>router.push('cart')} className=' relative h-10 w-10 flex items-center justify-center cursor-pointer p-2 rounded-full'>
-          <GiShoppingCart className=' text-3xl' title='cart' />
+          <FiPhoneCall className=' text-3xl hover:animate-bounce' title='connects' />
           {cart && cart.length > 0 ? <div className=' h-4 w-4 rounded-full bg-slate-500 flex items-center justify-center absolute top-0 right-0 p-2 '><span>{cart.length}</span></div>: ''}
           </div>
         </div>

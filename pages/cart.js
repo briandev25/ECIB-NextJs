@@ -39,10 +39,6 @@ function Cart() {
                 <CartItem key={item.id}  {...item} />
               ))}
             </div>
-                      {/* Subtotal */}
-            <div className='flex justify-center   p-5'>
-                <div className='w-[500px] shadow-md py-6 px-12 bg-white max-h-[300px]'><Subtotal /></div>
-            </div>
         </div>
       </div> }
 

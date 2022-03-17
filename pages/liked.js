@@ -4,8 +4,14 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import { useRouter } from 'next/router'
 import Footer from '../components/Footer'
+import { useSelector} from 'react-redux'
+import CartItem from '../components/CartItem'
+
+
+
 function Liked() {
-    const router = useRouter();
+const liked = useSelector(state => state.liked)
+const router = useRouter();
 
   return (
   <div>
@@ -15,13 +21,23 @@ function Liked() {
         <link rel="icon" href="/images/favicon-16x16.png" />
     </Head>
     <Header />
-        <div className='flex items-center justify-center'>
+     {liked.length < 1 ? <div className='flex items-center justify-center'>
         <div className='flex flex-col bg-white mt-20 min-w-[300px] mx-10 w-full  md:w-1/2'>
             <h1 className=' text-center text-2xl font-semibold py-5'>You have no favorites!</h1>
             <Image src='/images/no-favorites.png' width={300}  height={300} objectFit='contain' />
             <button onClick={() => router.push('/')} className='cartButton'>Back to Home</button>
         </div>
-    </div>
+    </div>: <div className='flex max-w-screen-xl mx-auto flex-col items-center justify-center w-full'>
+        <h1 className=' text-3xl font-semibold m-5'>Liked Products</h1>
+        <div className='flex flex-col   w-full'>
+                      {/* CartItems */}
+            <div className=' flex flex-col flex-grow'>
+              {liked?.map((item) =>(
+                <CartItem key={item.id}  {...item} />
+              ))}
+            </div>
+        </div>
+      </div>}
     <Footer />
  </div>
   )

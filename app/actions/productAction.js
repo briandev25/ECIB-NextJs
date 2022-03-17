@@ -31,3 +31,9 @@ export const removeFromCart = (productId) =>{
         payload:productId
     }
 }
+export const removeFromLikes = (productId) =>{
+    return{
+        type:Actiontypes.REMOVE_FROM_LIKES,
+        payload:productId
+    }
+}

@@ -16,7 +16,7 @@ function Footer() {
         </div>
         <div className=' mb-4'>
             <h1 className='footerHeader'>Support</h1>
-            <p className='footerLink'>kiprop@gmail.com</p>
+            <p className='footerLink'>kipropbrian34@gmail.com</p>
             <p className='footerLink'>Safety Tips</p>
             <p className='footerLink'>Contact Us</p>
             <p className='footerLink'>FAQ</p>

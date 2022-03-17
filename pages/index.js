@@ -8,6 +8,7 @@ import Products from '../components/Products'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { useEffect } from 'react'
+import Reviews from '../components/reviews'
 
 export default function Home({products}) {
 
@@ -30,6 +31,7 @@ export default function Home({products}) {
       <main className=' max-w-screen-2xl mx-auto'>
       <Categories /> 
       <Products products ={products} />
+      <Reviews />
       </main>
       <Footer />   
      </div>
