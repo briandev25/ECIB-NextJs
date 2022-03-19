@@ -1,4 +1,5 @@
-import firebase from 'firebase/compat/app';
+import firebase from 'firebase/compat/app'
+import { getStorage } from 'firebase/storage'
 import 'firebase/compat/firestore';
 
 const firebaseConfig = {
@@ -11,9 +12,9 @@ const firebaseConfig = {
     measurementId: "G-MKX94W0KLD"
   };
 
-  const app = firebase?.app.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
+  const app = !firebase?.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
   
   const db = app.firestore();
- // const storage = firebase.storage();
+  const storage = getStorage(app)
 
-  export{ db }
+  export{ db,storage }
