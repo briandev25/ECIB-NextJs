@@ -39,32 +39,16 @@ function Footer() {
       <div className=" flex flex-col md:flex-row  items-center justify-between mt-10 border-t border-gray-400 pt-2 px-10">
         <p>@Copyright 2022 ECIB</p>
         <div className="flex mt-4 space-x-3 ">
-          <a
-            href="https://web.facebook.com/profile.php?id=100010603156332"
-            target="_blank"
-            rel=" noopener noreferrer"
-          >
+          <a href="https://web.facebook.com/profile.php?id=100010603156332">
             <FaFacebookF className="cursor-pointer" />
           </a>
-          <a
-            href="https://www.linkedin.com/in/bryan-kiprop-744254173/"
-            target="_blank"
-            rel=" noopener noreferrer"
-          >
+          <a href="https://www.linkedin.com/in/bryan-kiprop-744254173/">
             <BsLinkedin className="cursor-pointer" />
           </a>
-          <a
-            href="https://twitter.com/briankips254"
-            target="_blank"
-            rel=" noopener noreferrer"
-          >
+          <a href="https://twitter.com/briankips254">
             <AiOutlineTwitter className="cursor-pointer" />
           </a>
-          <a
-            href="https://github.com/briandev25"
-            target="_blank"
-            rel=" noopener noreferrer"
-          >
+          <a href="https://github.com/briandev25">
             <BsGithub className="cursor-pointer" />
           </a>
         </div>
