@@ -31,7 +31,7 @@ function SelectField({ labelName, textArea, selectField, choices, ...props }) {
       )}
       {textArea && (
         <div className="flex flex-col items-center space-x-3">
-          <label>Description:</label>
+          <label className="inputLabel">Description:</label>
           <textarea
             className={`inputField ${
               meta.touched && meta.error && "border-red-700"

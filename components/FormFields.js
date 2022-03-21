@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useSession } from "next-auth/react";
-import { CameraIcon } from "@heroicons/react/solid";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import Textfield from "./Textfield";
 import SelectField from "./SelectField";
+import ImageUpload from "./ImageUpload";
+import { db, storage } from "../firebase";
+import firebase from "firebase";
+import { CameraIcon } from "@heroicons/react/solid";
+import { Progress } from "react-sweet-progress";
+import "react-sweet-progress/lib/style.css";
 
 function FormFields() {
   const { data: session } = useSession();
+  const [postImage, setPostImage] = useState(null);
+  const [progress, setProgress] = useState(0);
+  const filePickerRef = useRef(null);
+
+  console.log(postImage);
 
   const validate = yup.object({
     firstName: yup
@@ -31,40 +41,103 @@ function FormFields() {
       .number()
       .min(10, "Cannot be less than 10 numbers")
       .required("Required"),
+    imageToPost: yup.mixed().required("Required"),
   });
 
-  //splitting the name
-  const fullName = session?.user.name;
-  const splitNames = fullName?.split(/(\s+)/);
+  const sendPost = (values) => {
+    const {
+      firstName,
+      lastName,
+      email,
+      userImage,
+      phoneNo,
+      title,
+      price,
+      description,
+      persons,
+      category,
+      imageToPost,
+    } = values;
 
-  const sendPost = (e) => {
-    e.preventDefault();
+    db.collection("posts")
+      .add({
+        firstName,
+        lastName,
+        email,
+        userImage,
+        phoneNo,
+        title,
+        price,
+        description,
+        persons,
+        category,
+        timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then((doc) => {
+        const uploadTask = storage
+          .ref(`posts/${doc.id}`)
+          .putString(postImage, "data_url");
+        removeImage();
 
-    db.collection("posts").add({
-      message: fName,
-      firstName: splitNames[0],
-      lastName: splitNames[2],
-      email: session.user.email,
-      image: session.user.image,
-    });
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            var prog = Math.round(
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            );
+            setProgress(prog);
+          },
+          (err) => console.log(err),
+          () => {
+            //When upload completes
+            storage
+              .ref(`posts/${doc.id}`)
+              .getDownloadURL()
+              .then((url) => {
+                db.collection("posts")
+                  .doc(doc.id)
+                  .set({ postImage: url }, { merge: true });
+              });
+          }
+        );
+      });
   };
+
+  const addImageToPost = (e) => {
+    const reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+
+    reader.onload = (readerEvent) => {
+      setPostImage(readerEvent.target.result);
+    };
+  };
+
+  const removeImage = () => {
+    setPostImage(null);
+  };
+
   return (
     <div>
       <Formik
         initialValues={{
-          firstName: splitNames[0],
-          lastName: splitNames[2],
+          firstName: session?.user.name.split(/(\s+)/)[0],
+          lastName: session?.user.name.split(/(\s+)/)[2],
           email: session?.user.email,
+          userImage: session?.user.image,
           phoneNo: "",
           title: "",
           price: "",
           description: "",
           persons: "",
           category: "",
+          imageToPost: "ree",
         }}
         validationSchema={validate}
         onSubmit={(values) => {
           setTimeout(() => {
+            sendPost(values);
             alert(JSON.stringify(values, null, 2));
           }, 400);
         }}
@@ -81,7 +154,7 @@ function FormFields() {
 
               <div className="flex flex-col  space-y-6 ">
                 {/* Email Address */}
-                <Textfield label="Email Addr:" name="email" type="email" />
+                <Textfield label="Email Address:" name="email" type="email" />
                 {/* Phone Number */}
                 <Textfield label="Phone No:" name="phoneNo" type="phone" />
               </div>
@@ -105,6 +178,8 @@ function FormFields() {
                     "Beddings",
                     "Jobs",
                     "Services",
+                    "Shoes",
+                    "Clothings",
                   ]}
                   name="category"
                   selectField
@@ -117,9 +192,51 @@ function FormFields() {
                 <Textfield label="Price:" name="price" type="number" />
               </div>
               <SelectField name="description" type="text" textArea />
+              <div>
+                <div className="flex flex-col items-center">
+                  <div className="flex items-end">
+                    <CameraIcon
+                      onClick={() => filePickerRef.current.click()}
+                      className=" h-12 cursor-pointer"
+                    />
+                    <p className="text-lg font-semibold">Upload Image</p>
+                  </div>
+                  <div>
+                    {postImage && (
+                      <div className="h-12 w-12">
+                        <img
+                          src={postImage}
+                          alt=""
+                          className=" h-12 object-contain"
+                        />
+                        <p onClick={removeImage} className=" cursor-pointer">
+                          Remove
+                        </p>
+                      </div>
+                    )}
+                    <input
+                      ref={filePickerRef}
+                      type="file"
+                      hidden
+                      onChange={addImageToPost}
+                    />
+                    <ErrorMessage
+                      className=" text-red-800"
+                      name="imageToPost"
+                      component="div"
+                    />
+                  </div>
+                </div>
+              </div>
+
               <button className="submitButton" type="submit">
                 Submit
               </button>
+              <div className="flex items-center justify-center">
+                {progress > 0 && (
+                  <Progress type="circle" percent={progress} status="success" />
+                )}
+              </div>
             </div>
           </Form>
         )}

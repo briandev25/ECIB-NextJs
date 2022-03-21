@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  images:{
-    domains:['fakestoreapi.com']
-  }
-}
+  images: {
+    domains: [
+      "fakestoreapi.com",
+      "lh3.googleusercontent.com",
+      "firebasestorage.googleapis.com",
+    ],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
