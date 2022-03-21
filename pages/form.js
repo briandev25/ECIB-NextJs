@@ -12,7 +12,12 @@ function InputForm() {
       <main className="flex w-screen h-[calc(100vh-70px)]">
         {/* left */}
         <div className=" hidden md:inline-block relative w-1/2 xl:w-2/5 ">
-          <Image src="/images/form.jpg" layout="fill" objectFit="cover" />
+          <Image
+            alt=""
+            src="/images/form.jpg"
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
         {/* right */}
         <div className=" w-full md:w-1/2 xl:w-3/5 mx-auto overflow-y-auto scrollbar-hide">

@@ -19,7 +19,7 @@ function SelectField({ labelName, textArea, selectField, choices, ...props }) {
               Select An Option
             </option>
             {choices.map((choice) => (
-              <option>{choice}</option>
+              <option key={choice}>{choice}</option>
             ))}
           </select>
           <ErrorMessage

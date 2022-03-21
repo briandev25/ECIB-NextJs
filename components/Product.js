@@ -46,7 +46,7 @@ function Product({ title, price, description, category, image, rating }) {
           {Array(parseInt(rating.rate))
             .fill()
             .map((_, i) => (
-              <StarIcon className="h-5 text-yellow-500" />
+              <StarIcon key={i} className="h-5 text-yellow-500" />
             ))}
         </div>
         <p className=" text-base text-gray-600 mr-4">{`$${price}`}</p>
