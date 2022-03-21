@@ -42,28 +42,28 @@ function Footer() {
           <a
             href="https://web.facebook.com/profile.php?id=100010603156332"
             target="_blank"
-            rel="noopener"
+            rel=" noopener noreferrer"
           >
             <FaFacebookF className="cursor-pointer" />
           </a>
           <a
             href="https://www.linkedin.com/in/bryan-kiprop-744254173/"
             target="_blank"
-            rel="noopener"
+            rel=" noopener noreferrer"
           >
             <BsLinkedin className="cursor-pointer" />
           </a>
           <a
             href="https://twitter.com/briankips254"
             target="_blank"
-            rel="noopener"
+            rel=" noopener noreferrer"
           >
             <AiOutlineTwitter className="cursor-pointer" />
           </a>
           <a
             href="https://github.com/briandev25"
             target="_blank"
-            rel="noopener"
+            rel=" noopener noreferrer"
           >
             <BsGithub className="cursor-pointer" />
           </a>
