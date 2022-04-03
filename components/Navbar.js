@@ -41,7 +41,7 @@ function Navbar() {
             className="link"
             onClick={() => (!session ? signIn() : signOut())}
           >
-            {session ? `${session.user.name}` : "Sign In"}
+            {session ? `${session.user.name}` : "Sign In/Register"}
           </h3>
         </div>
         <div className="h-10 w-10 flex items-center justify-center cursor-pointer p-2 rounded-full">

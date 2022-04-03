@@ -35,7 +35,7 @@ function FormFields() {
     category: yup.string().required("Required"),
     description: yup
       .string()
-      .max(50, "Not more than 50 words")
+      .min(50, "Not less than 50 words")
       .required("Required"),
     phoneNo: yup
       .number()
@@ -180,6 +180,7 @@ function FormFields() {
                     "Services",
                     "Shoes",
                     "Clothings",
+                    "Bags and Fashion",
                   ]}
                   name="category"
                   selectField

@@ -3,6 +3,7 @@ import { StarIcon, HeartIcon as HeartIconSolid } from "@heroicons/react/solid";
 import { HeartIcon as HeartIconOutline } from "@heroicons/react/outline";
 import CurrencyFormat from "react-currency-format";
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
 function UserPost({
   category,
@@ -12,12 +13,35 @@ function UserPost({
   price,
   timeStamp,
   userImage,
+  phoneNo,
+  persons,
+  firstName,
+  lastName,
 }) {
+  const post = {
+    category,
+    postImage,
+    title,
+    description,
+    price,
+    timeStamp,
+    userImage,
+    phoneNo,
+    persons,
+    firstName,
+    lastName,
+  };
+  const router = useRouter();
   const [liked, setLiked] = useState(false);
 
   return (
     <div
-      data-aos="fade-up"
+      onClick={() =>
+        router.push({
+          pathname: "/productDetails",
+          query: post,
+        })
+      }
       className="flex flex-col cursor-pointer  min-w-[321px] bg-white rounded-lg overflow-hidden hover:scale-95 transition transform duration-200 ease-in-out mx-6 my-3"
     >
       <div>

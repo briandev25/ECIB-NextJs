@@ -15,6 +15,8 @@ function Recent() {
         {snapshot?.docs.map((post) => (
           <UserPost
             key={post.id}
+            firstName={post.data().firstName}
+            lastName={post.data().lastName}
             title={post.data().title}
             postImage={post.data().postImage}
             description={post.data().description}
@@ -22,6 +24,8 @@ function Recent() {
             price={post.data().price}
             userImage={post.data().userImage}
             timeStamp={post.data().timeStamp}
+            phoneNo={post.data().phoneNo}
+            persons={post.data().persons}
           />
         ))}
       </div>
