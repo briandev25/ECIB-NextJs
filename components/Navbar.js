@@ -18,7 +18,7 @@ function Navbar() {
         className="text-gray-100 flex items-center cursor-pointer flex-grow"
       >
         <Image
-          alt=""
+          alt="/images/no-image.png"
           src="/images/my-logo.png"
           width={200}
           height={70}

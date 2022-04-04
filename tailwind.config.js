@@ -5,12 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {},
-    fontFamily:{
-      'tangerine':['Tangerine']
-    }
+    fontFamily: {
+      nunito: ["Montserrat", "Nunito Sans", "Poppins", "Tangerine"],
+    },
   },
   plugins: [
-    require('tailwind-scrollbar-hide'),
-    require('@tailwindcss/line-clamp'),
+    require("tailwind-scrollbar-hide"),
+    require("@tailwindcss/line-clamp"),
   ],
-}
+};

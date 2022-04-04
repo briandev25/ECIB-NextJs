@@ -25,7 +25,11 @@ function ProductDetails({ router }) {
   return (
     <div>
       <Header />
-      <div className="h-[calc(100vh-70px)] max-w-screen-xl mx-auto mt-10 lg:flex">
+      {/* Description */}
+      <div className=" my-10 max-w-screen-xl bg-white mx-auto py-8 px-10 ">
+        <p className=" text-2xl text-gray-600">{description}</p>
+      </div>
+      <div className="h-[calc(100vh-70px)] max-w-screen-xl mx-auto lg:flex">
         {/* Image section */}
         <div className=" w-3/5">
           <div className=" relative h-[550px] max-w-full">
@@ -79,7 +83,7 @@ function ProductDetails({ router }) {
             <div className="flex items-center mx-5 justify-between">
               <img
                 src={userImage}
-                alt=""
+                alt="/images/no-image.png"
                 width={40}
                 height={40}
                 className=" rounded-full"

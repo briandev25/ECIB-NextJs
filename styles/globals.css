@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-[#EAEDED];
+    @apply bg-[#EAEDED] font-nunito;
   }
 }
 
