@@ -176,11 +176,12 @@ function FormFields() {
                     "Pets",
                     "Funiture",
                     "Beddings",
-                    "Jobs",
                     "Services",
+                    "Jobs",
+                    "Kitchenware",
                     "Shoes",
-                    "Clothings",
-                    "Bags and Fashion",
+                    "Fashion",
+                    "Bags",
                   ]}
                   name="category"
                   selectField

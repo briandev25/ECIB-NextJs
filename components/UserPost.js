@@ -35,16 +35,15 @@ function UserPost({
   const [liked, setLiked] = useState(false);
 
   return (
-    <div
-      onClick={() =>
-        router.push({
-          pathname: "/productDetails",
-          query: post,
-        })
-      }
-      className="flex flex-col cursor-pointer  min-w-[321px] bg-white rounded-lg overflow-hidden hover:scale-95 transition transform duration-200 ease-in-out mx-6 my-3"
-    >
-      <div>
+    <div className="flex flex-col cursor-pointer  min-w-[321px] bg-white rounded-lg overflow-hidden hover:scale-95 transition transform duration-200 ease-in-out mx-6 my-3">
+      <div
+        onClick={() =>
+          router.push({
+            pathname: "/productDetails",
+            query: post,
+          })
+        }
+      >
         <div className=" relative h-56">
           <Image
             src={postImage}

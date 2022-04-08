@@ -25,8 +25,11 @@ function Navbar() {
           objectFit="cover"
         />
       </div>
-      <div className=" hidden md:flex items-center space-x-4 pr-10">
-        <h3 className="link">Explore</h3>
+      <div
+        onClick={() => router.push("about")}
+        className=" hidden md:flex items-center space-x-4 pr-10"
+      >
+        <h3 className="link">About</h3>
         <div className="flex items-center">
           {session && (
             <img
@@ -50,22 +53,6 @@ function Navbar() {
             className=" text-3xl hover:animate-bounce"
             title="favorites"
           />
-        </div>
-        <div
-          onClick={() => router.push("cart")}
-          className=" relative h-10 w-10 flex items-center justify-center cursor-pointer p-2 rounded-full"
-        >
-          <FiPhoneCall
-            className=" text-3xl hover:animate-bounce"
-            title="connects"
-          />
-          {cart && cart.length > 0 ? (
-            <div className=" h-4 w-4 rounded-full bg-slate-500 flex items-center justify-center absolute top-0 right-0 p-2 ">
-              <span>{cart.length}</span>
-            </div>
-          ) : (
-            ""
-          )}
         </div>
       </div>
       <h3

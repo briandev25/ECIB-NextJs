@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSession, signIn } from "next-auth/react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { withRouter } from "next/router";
@@ -7,6 +8,7 @@ import { PhoneIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 
 function ProductDetails({ router }) {
+  const { data: session } = useSession();
   const [showContact, setShowContact] = useState(false);
   const {
     category,
@@ -34,7 +36,8 @@ function ProductDetails({ router }) {
         <div className=" w-3/5">
           <div className=" relative h-[550px] max-w-full">
             <Image
-              src={postImage}
+              alt=""
+              src={postImage || ""}
               layout="fill"
               objectFit="cover"
               className=" rounded-lg overflow-hidden"
@@ -93,7 +96,13 @@ function ProductDetails({ router }) {
               </h1>
             </div>
             <button
-              onClick={() => setShowContact(true)}
+              onClick={() => {
+                if (session) {
+                  setShowContact(true);
+                } else {
+                  signIn();
+                }
+              }}
               className="showContactButton "
             >
               <PhoneIcon className=" h-6 mr-2" />

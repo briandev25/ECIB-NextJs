@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import Reviews from "../components/reviews";
 import Recent from "../components/Recent";
 
-export default function Home({ products }) {
+export default function Home() {
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
@@ -30,7 +30,6 @@ export default function Home({ products }) {
         <main className=" max-w-screen-2xl mx-auto">
           <Categories />
           <Recent />
-          <Products products={products} />
           <Reviews />
         </main>
         <Footer />
@@ -40,16 +39,4 @@ export default function Home({ products }) {
       </div>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  const products = await fetch("https://fakestoreapi.com/products").then(
-    (res) => res.json()
-  );
-
-  return {
-    props: {
-      products,
-    },
-  };
 }
